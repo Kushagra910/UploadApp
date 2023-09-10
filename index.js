@@ -9,7 +9,11 @@
  //middleware add karne hai 
  app.use(express.json());
  const fileupload = require("express-fileupload");
- app.use(fileupload());
+ app.use(fileupload({
+  limits:{fileSize : 5*1024*1024},
+  useTempFiles:true,
+  tempFileDir : '/tmp/'
+ }));
 
  // db se connect karna hai 
  const db = require("./config/database");
